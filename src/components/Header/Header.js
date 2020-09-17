@@ -20,8 +20,9 @@ const Header = () => {
                         <Nav.Link href="#home" className="px-4 text-white">Home</Nav.Link>
                         <Nav.Link href="#link" className="px-4 text-white">Blog</Nav.Link>
                         <Nav.Link href="#link" className="px-4 text-white">Contact</Nav.Link>
-                      
-                        <Button style={{backgroundColor:'#F9A51A',border:"none",color:"black"}} className="px-4 " >Login</Button>
+                        <Link to={`/login`}>  <Button style={{backgroundColor:'#F9A51A',border:"none",color:"black"}} className="px-4 " >Login</Button>
+                                </Link>
+                       
                     </Nav>
                    
                 </Navbar.Collapse>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Header from '../Header/Header';
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,29 +8,42 @@ import { faCalendar } from '@fortawesome/free-solid-svg-icons'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './Booking.css';
+import { useForm } from "react-hook-form";
 
 
 const Booking = () => {
     let { id } = useParams();
+    const [verification, setverification] = useState(false)
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState();
-    const [origin, setorigin] = useState();
+    const [origin, setorigin] = useState({
+        name:""
+    });
     const [destination, setdestination] = useState(id);
+
     const bookingHandler = (e) => {
-        if (origin&&destination&&startDate&&endDate) {
-            alert('congo man...............')
+        if (origin.name.length!==0 ) {
+            setverification(true)
+            console.log(origin);
+        }
+        else {
+            alert('please enter information')
         }
         e.preventDefault()
     }
     const adressHandler = (e) => {
-        let validator=false;
-        if(e.target.value){
-            validator=/^[a-zA-Z0-9\s,'-]*$/.test(e.target.value);
+        let validator = false;
+        if (e.target.value) {
+            validator = /^[a-zA-Z0-9\s,'-]*$/.test(e.target.value);
+
         }
         if (validator) {
             console.log(e.target.value);
-            setorigin(e.target.value)
-        }else{
+            setorigin({
+                name:e.target.value
+            })
+            setverification(true)
+        } else {
             setorigin("")
             alert('please enter valid adress')
         }
@@ -49,6 +62,7 @@ const Booking = () => {
     }
     return (
         <div>
+          
             <div className="background text-white">
                 <div className="opacity">
                     <Header></Header>
@@ -58,11 +72,7 @@ const Booking = () => {
                                 <div>
                                     <h2 className="font-weight-bold display-3">{id}</h2>
                                     <h6 className="pt-3 d-block">{details}</h6>
-                                    <div>
-                                        <p>{origin}</p>
-                                         <p>{destination}</p>
-                                        {/* <p></p> */}
-                                    </div>
+
                                 </div>
                             </Col>
                             <Col className="mx-auto pt-4" sm={7}>
@@ -71,7 +81,7 @@ const Booking = () => {
                                         <Form onSubmit={bookingHandler}>
                                             <Form.Group controlId="formGridAddress1">
                                                 <Form.Label>Origin</Form.Label>
-                                                <Form.Control onChange={adressHandler} required placeholder="" />
+                                                <Form.Control onBlur={adressHandler} required placeholder="" />
                                             </Form.Group>
 
                                             <Form.Group controlId="formGridAddress2">
@@ -93,14 +103,14 @@ const Booking = () => {
                                                     <DatePicker required showYearDropdown scrollableYearDropdown minDate={(new Date())} selected={endDate} onChange={date => setEndDate(date)} ></DatePicker>  <span><FontAwesomeIcon className="fa-1x" icon={faCalendar} /></span>
                                                 </Form.Group>
                                             </Form.Row>
-
-
-
-                                            <Button variant="primary" block type="submit">
+                                            <Link  to={verification&&startDate!==undefined&&endDate!==undefined?`/hotelRoom`:`/booking/${id}`}> <Button variant="primary" block type="submit">
                                                 Start Booking
-                                </Button>
+                                            </Button>
+                                            </Link>
+
                                         </Form>
                                     </div>
+
                                 </Container>
                             </Col>
                         </Row>
