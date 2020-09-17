@@ -12,7 +12,8 @@ firebase.initializeApp(firebaseConfig);
 const CreateAccount = () => {
     let history = useHistory();
     let location = useLocation();
-    let { from } = { from: { pathname: "/hotelroom" } } || { from: { pathname: "/" } };
+    // let { from } = { from: { pathname: "/hotelroom" } } || { from: { pathname: "/" } };
+    let { from } = location.state || { from: { pathname: "/" } };
     const { register, handleSubmit, watch, errors } = useForm({
         mode: "onBlur"
     });

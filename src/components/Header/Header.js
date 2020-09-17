@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { LoggedInUserContext } from '../../App';
 import logo from '../travel-guru-resources/Logo.png'
 const Header = () => {
+    const [user, setUser] = useContext(LoggedInUserContext);
     return (
         <div>
             <Navbar bg="" expand="lg" >
@@ -20,7 +22,7 @@ const Header = () => {
                         <Nav.Link href="#home" className="px-4 text-primary">Home</Nav.Link>
                         <Nav.Link href="#link" className="px-4 text-primary">Blog</Nav.Link>
                         <Nav.Link href="#link" className="px-4 text-primary">Contact</Nav.Link>
-                        <Link to={`/login`}>  <Button style={{backgroundColor:'#F9A51A',border:"none",color:"black"}} className="px-4 " >Login</Button>
+                        <Link to={`/login`}>  <Button style={{backgroundColor:'#F9A51A',border:"none",color:"black"}} className="px-4 " >{user.name?`${user.name}`:"Login"}</Button>
                                 </Link>
                        
                     </Nav>
