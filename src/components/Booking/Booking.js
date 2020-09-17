@@ -103,7 +103,7 @@ const Booking = () => {
                                                     <DatePicker required showYearDropdown scrollableYearDropdown minDate={(new Date())} selected={endDate} onChange={date => setEndDate(date)} ></DatePicker>  <span><FontAwesomeIcon className="fa-1x" icon={faCalendar} /></span>
                                                 </Form.Group>
                                             </Form.Row>
-                                            <Link  to={verification&&startDate!==undefined&&endDate!==undefined?`/hotelRoom`:`/booking/${id}`}> <Button variant="primary" block type="submit">
+                                            <Link  to={verification&&startDate!==undefined&&endDate!==undefined?`/hotelRoom/${id}`:`/booking/${id}`}> <Button variant="primary" block type="submit">
                                                 Start Booking
                                             </Button>
                                             </Link>

@@ -15,11 +15,11 @@ const Header = () => {
                        
                     </Form>
                     <Nav className="ml-auto ">
-                        <Nav.Link href="#link" className="px-4 text-white">News</Nav.Link>
-                        <Nav.Link href="#link" className="px-4 text-white">Destination</Nav.Link>
-                        <Nav.Link href="#home" className="px-4 text-white">Home</Nav.Link>
-                        <Nav.Link href="#link" className="px-4 text-white">Blog</Nav.Link>
-                        <Nav.Link href="#link" className="px-4 text-white">Contact</Nav.Link>
+                        <Nav.Link href="#link" className="px-4 text-primary">News</Nav.Link>
+                        <Nav.Link href="#link" className="px-4 text-primary">Destination</Nav.Link>
+                        <Nav.Link href="#home" className="px-4 text-primary">Home</Nav.Link>
+                        <Nav.Link href="#link" className="px-4 text-primary">Blog</Nav.Link>
+                        <Nav.Link href="#link" className="px-4 text-primary">Contact</Nav.Link>
                         <Link to={`/login`}>  <Button style={{backgroundColor:'#F9A51A',border:"none",color:"black"}} className="px-4 " >Login</Button>
                                 </Link>
                        

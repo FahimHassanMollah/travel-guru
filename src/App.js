@@ -38,7 +38,7 @@ function App() {
           <Route path="/createaccount">
            <CreateAccount></CreateAccount>
           </Route>
-          <PrivateRoute path="/hotelRoom">
+          <PrivateRoute path="/hotelRoom/:id">
             <HotelRoom></HotelRoom>
           </PrivateRoute>
 
