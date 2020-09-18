@@ -27,7 +27,7 @@ const Slider = () => {
                                 <Card.Text>
                                     {/* <small>Sylhet may be the primary city in the eponymous division, but sylvan Srimangal is the undoubted star of this region. Blessed with rolling hills carpeted with endless tea plantations, dense forest sanctuaries and a sprinkling of tribal.</small> */}
                                 </Card.Text>
-                                <Link to={`/booking/${'Sreemangal'}`}>  <Button style={{ backgroundColor: '#F9A51A', border: "none", color: "black" }} className="" >Booking</Button> </Link>
+                                <Link to={`/booking/${'Sreemangal'}`}>  <Button style={{ backgroundColor: '#F9A51A', border: "none", color: "black" }} className="" >Booking now</Button> </Link>
                               
 
                             </Card.Body>
@@ -41,7 +41,7 @@ const Slider = () => {
                                 <Card.Text>
                                     {/* <small>The Sundarbans is a mangrove area in the delta formed by the confluence of the Ganges, Brahmaputra and Meghna Rivers in the Bay of Bengal. It spans from the Hooghly River in India's state of West Bengal to the Baleswar River in Bangladesh</small> */}
                                 </Card.Text>
-                                <Link to={`/booking/${'Sundarbans'}`}> <Button style={{ backgroundColor: '#F9A51A', border: "none", color: "black" }} className="" >Booking</Button>
+                                <Link to={`/booking/${'Sundarbans'}`}> <Button style={{ backgroundColor: '#F9A51A', border: "none", color: "black" }} className="" >Booking now</Button>
                                 </Link>
 
                             </Card.Body>
@@ -55,7 +55,7 @@ const Slider = () => {
                                 {/* <Card.Text>
                                     Cox's Bazar is a city, fishing port, tourism centre and district headquarters in southeastern Bangladesh. It is famous mostly for its long natural sandy beach, and it.
                                     </Card.Text> */}
-                                <Link to={`/booking/${"Cox's-bazar"}`}> <Button style={{ backgroundColor: '#F9A51A', border: "none", color: "black" }} className="" >Book</Button>
+                                <Link to={`/booking/${"Cox's-bazar"}`}> <Button style={{ backgroundColor: '#F9A51A', border: "none", color: "black" }} className="" >Booking now</Button>
                                 </Link>
 
                             </Card.Body>
@@ -83,7 +83,7 @@ const Slider = () => {
                                 <Card.Text>
                                     {/* <small>The Sundarbans is a mangrove area in the delta formed by the confluence of the Ganges, Brahmaputra and Meghna Rivers in the Bay of Bengal. It spans from the Hooghly River in India's state of West Bengal to the Baleswar River in Bangladesh</small> */}
                                 </Card.Text>
-                                <Link to={`/booking/${'Sundarbans'}`}> <Button style={{ backgroundColor: '#F9A51A', border: "none", color: "black" }} className="" >Booking</Button>
+                                <Link to={`/booking/${'Sundarbans'}`}> <Button style={{ backgroundColor: '#F9A51A', border: "none", color: "black" }} className="" >Booking now</Button>
                                 </Link>
 
                             </Card.Body>
@@ -97,7 +97,7 @@ const Slider = () => {
                                 {/* <Card.Text>
                                     Cox's Bazar is a city, fishing port, tourism centre and district headquarters in southeastern Bangladesh. It is famous mostly for its long natural sandy beach, and it.
                                     </Card.Text> */}
-                                <Link to={`/booking/${"Cox's-bazar"}`}> <Button style={{ backgroundColor: '#F9A51A', border: "none", color: "black" }} className="" >Booking</Button>
+                                <Link to={`/booking/${"Cox's-bazar"}`}> <Button style={{ backgroundColor: '#F9A51A', border: "none", color: "black" }} className="" >Booking now</Button>
                                 </Link>
 
                             </Card.Body>

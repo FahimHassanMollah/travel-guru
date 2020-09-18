@@ -35,7 +35,7 @@ const HotelRoom = () => {
                                 <small className="text-muted">252 stays Apr 13-17 3 guests</small>
                                 <br />
                                 <span className="text-muted">Stay in</span>
-                                <span className="text-success display-2" style={{ fontSize: "20px", fontWeight: "bold" }}>{` ${id}`}</span>
+                                <span className="text-success " style={{ fontSize: "26px", fontWeight: "bold" }}>{` ${id}`}</span>
                             </div>
 
                             <Row className="py-2">

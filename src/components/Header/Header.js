@@ -9,7 +9,8 @@ const Header = () => {
         <div>
             <Navbar bg="" expand="lg" >
                 <Container>
-                    <Navbar.Brand href="#home" className="text-white bg-white"><img style={{ height: '40px' }} src={logo} alt="" /></Navbar.Brand>
+                    <Link to={`/`}>
+                        <Navbar.Brand className="text-white bg-white"><img style={{ height: '40px' }} src={logo} alt="" /></Navbar.Brand> </Link>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Form inline>
@@ -17,20 +18,27 @@ const Header = () => {
 
                         </Form>
                         <Nav className="ml-auto ">
-                            <Link to={`/`}>  <a className="btn px-4 text-primary link" >Home</a>
+                            <Link to={`/`} className="btn px-3 text-primary link"> Home
                             </Link>
-                            <Link to={`/news`}>  <a className="btn px-4 text-primary link" >News</a>
+                            <Link to={`/news`} className="btn px-3 text-primary link">News
                             </Link>
-                            <Link to={`/destination`}>  <a className="btn px-4 text-primary link" >Destination</a>
+                            <Link to={`/destination`} className="btn px-2 text-primary link"> Destination
                             </Link>
-                            <Link to={`/blog`}>  <a className="btn px-4 text-primary link" >Blog</a>
+                            <Link to={`/blog`} className="btn px-3 text-primary link">  Blog
                             </Link>
-                            <Link to={`/contact`}>  <a className="btn px-4 text-primary link" >Contact</a>
-                            </Link>
-                           
-                            <Link to={`/login`}>  <Button style={{ backgroundColor: '#F9A51A', border: "none", color: "black" }} className="px-4 " >{user.name ? `${user.name}` : "Login"}</Button>
+                            <Link to={`/contact`} className="btn px-3 text-primary link">Contact
                             </Link>
 
+                             {
+                                user.email ? <a className="btn px-2 text-danger link " >{ user.name}</a>
+                                    :
+                                    <Link to={`/login`}>  <Button style={{ backgroundColor: '#F9A51A', border: "none", color: "black" }} className="px-2 " >log in</Button>
+                                    </Link>
+                            }
+                            {
+                                user.email && <Link to={`/`}>  <Button onClick={() => setUser({})} style={{ backgroundColor: '#F9A51A', border: "none", color: "black" }} className="mx-2  " >Log out</Button>
+                                </Link>
+                            }
                         </Nav>
 
                     </Navbar.Collapse>

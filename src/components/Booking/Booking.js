@@ -24,7 +24,7 @@ const Booking = () => {
     const bookingHandler = (e) => {
         if (origin.name.length!==0 ) {
             setverification(true)
-            console.log(origin);
+           
         }
         else {
             alert('please enter information')
@@ -38,7 +38,7 @@ const Booking = () => {
 
         }
         if (validator) {
-            console.log(e.target.value);
+           
             setorigin({
                 name:e.target.value
             })

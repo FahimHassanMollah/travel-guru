@@ -24,11 +24,7 @@ class Maps extends Component {
                         
                         position={{lat:this.lats, lng:this.lngs}}/>
 
-                    <InfoWindow onClose={this.onInfoWindowClose}>
-                        {/* <div>
-                            <h1>{this.state.selectedPlace.name}</h1>
-                        </div> */}
-                    </InfoWindow>
+                  
                 </Map>
             </div>
         );

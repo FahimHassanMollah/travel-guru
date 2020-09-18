@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Header from '../Header/Header';
 import { Button, Col, Container, Row } from 'react-bootstrap';
@@ -10,34 +10,48 @@ import { firebaseConfig } from '../../FireBase/firebaseConfig';
 import { LoggedInUserContext } from '../../App';
 firebase.initializeApp(firebaseConfig);
 const CreateAccount = () => {
+    const [error, setError] = useState("");
     let history = useHistory();
     let location = useLocation();
-    // let { from } = { from: { pathname: "/hotelroom" } } || { from: { pathname: "/" } };
     let { from } = location.state || { from: { pathname: "/" } };
+    // let { from } =  { from: { pathname: "/" } };
     const { register, handleSubmit, watch, errors } = useForm({
         mode: "onBlur"
     });
     const [user, setUser] = useContext(LoggedInUserContext)
 
     const onSubmit = (data) => {
-        console.log(data);
+
         if (data.email && data.password && data.firstName && data.lastName) {
             firebase.auth().createUserWithEmailAndPassword(data.email, data.password)
                 .then(() => {
-                    console.log('working');
+                    // console.log('working');
                     let fullNName = `${data.firstName} ${data.lastName}`
                     let userInformation = {
                         name: fullNName,
                         email: data.email
                     }
+                    var user = firebase.auth().currentUser;
+                    user.updateProfile({
+                        displayName: fullNName
+
+                    }).then(function () {
+                        // Update successful.
+                    }).catch(function (error) {
+                        // An error happened.
+                    });
                     setUser(userInformation)
-                    history.replace(from);
+                    history.push(from.state.from.pathname || "/");
+                    // console.log(from, "this funnnnn 28");
+                    // console.log(userInformation);
+                    // console.log(from.state.from.pathname);
                 })
                 .catch(function (error) {
 
                     var errorCode = error.code;
                     var errorMessage = error.message;
-                    console.log(errors.code);
+                    setError(errorMessage)
+
                 });
         }
 
@@ -53,15 +67,15 @@ const CreateAccount = () => {
                 email: email
             }
             setUser(userInformation)
-            history.replace(from);
-            console.log(displayName, email);
+            history.push(from.state.from.pathname || "/");
+
 
         }).catch(function (error) {
             let errorCode = error.code;
             let errorMessage = error.message;
             let email = error.email;
             let credential = error.credential;
-            
+
 
         });
 
@@ -77,14 +91,14 @@ const CreateAccount = () => {
                 email: email
             }
             setUser(userInformation)
-            history.replace(from);
+            history.push(from.state.from.pathname || "/");
         }).catch(function (error) {
-          
+
             let errorCode = error.code;
             let errorMessage = error.message;
             let email = error.email;
             let credential = error.credential;
-            console.log(errorMessage);
+
         });
 
     }
@@ -128,7 +142,7 @@ const CreateAccount = () => {
 
                                     <div className="form-group">
                                         <label>Password</label>
-                                        <input name="password" className="form-control"
+                                        <input name="password" type="password" className="form-control"
                                             ref={register({ required: "password is required", minLength: { value: 6, message: "Password must be at least 6 characeters" } })}
                                             placeholder="Enter password" />
 
@@ -140,6 +154,12 @@ const CreateAccount = () => {
                                         Already registered? <Link to={`/login`}>Login</Link>
                                     </p>
                                 </form>
+                                {
+                                    error &&
+                                    <div class="alert alert-warning" role="alert">
+                                        {error}
+                                    </div>
+                                }
                                 <hr />
                                 <h6 className="text-center">or</h6>
 

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import Header from '../Header/Header';
@@ -9,14 +9,17 @@ import { firebaseConfig } from '../../FireBase/firebaseConfig';
 import { LoggedInUserContext } from '../../App';
 
 const LogIn = () => {
-
-    const { register, handleSubmit, watch, errors } = useForm({
-        mode: "onBlur"
-    });
+    const [error, setError] = useState("");
     let history = useHistory();
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
     const [user, setUser] = useContext(LoggedInUserContext)
+    const { register, handleSubmit, watch, errors } = useForm({
+        mode: "onBlur"
+    });
+   
+
+   
     const googleSignInBtn = () => {
         let googleProvider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(googleProvider).then(function (result) {
@@ -29,14 +32,16 @@ const LogIn = () => {
             }
             setUser(userInformation)
             history.replace(from);
-           
+            console.log(from);
+
 
         }).catch(function (error) {
             let errorCode = error.code;
             let errorMessage = error.message;
             let email = error.email;
             let credential = error.credential;
-            console.log(errorMessage);
+
+            alert(errorMessage)
 
 
         });
@@ -62,6 +67,7 @@ const LogIn = () => {
             let email = error.email;
             let credential = error.credential;
             console.log(errorMessage);
+            alert(errorMessage)
         });
 
     }
@@ -69,20 +75,27 @@ const LogIn = () => {
         firebase.auth().signInWithEmailAndPassword(data.email, data.password)
             .then(() => {
                 var user = firebase.auth().currentUser;
-                var {name, email}=user;
+                console.log(user);
+                let { displayName, email } = user;
+                console.log(displayName,email);
                 let userInformation = {
-                    name: name,
+                    name: displayName,
                     email: email
                 }
                 setUser(userInformation)
                 history.replace(from);
-                console.log('working');
+               
+               
+              
+
             })
             .catch(function (error) {
 
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 console.log(errorMessage);
+                setError(errorMessage)
+                
 
             });
 
@@ -118,16 +131,19 @@ const LogIn = () => {
                                             placeholder="Enter password" />
                                         {errors.password && <span className="text-danger">{errors.password.message}</span>}
                                     </div>
-
-
-
                                     <button type="submit" className="btn btn-primary btn-block">Login</button>
-                                    <p className="forgot-password text-right">
-                                        Forgot <a href="#">password?</a>
-                                    </p>
+                                  
+                                   
                                 </form>
+                                {
+                                        error &&
+                                        <div class="alert alert-warning" role="alert">
+                                            {error}
+                                        </div>
+                                    }
+                                    <br/>
                                 <h6 className="text-center">Don’t have an account?
-                        <Link to={`/createaccount`}>   Create an account</Link>
+                                   <Link to={{pathname:'/createaccount',state:{ from: location }}}>create account </Link>
                                 </h6>
                                 <hr />
                                 <h6 className="text-center">or</h6>
