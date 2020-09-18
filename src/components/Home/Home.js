@@ -8,7 +8,7 @@ const Home = () => {
             <Container>
                 <Row>
                 
-                <Col className="mx-auto" sm={8}>
+                <Col className="mx-auto" sm={12}>
                     <Slider></Slider>
                 </Col>
                 </Row>

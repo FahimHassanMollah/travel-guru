@@ -17,6 +17,8 @@ import LogIn from './components/LogIn/LogIn';
 import HotelRoom from './components/HotelRoom/HotelRoom';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import CreateAccount from './components/CreateAccount/CreateAccount';
+import Blog from './components/Blog/Blog';
+import NoMatch from './components/NoMatch/NoMatch';
 export const LoggedInUserContext = React.createContext()
 function App() {
   const [user, setUser] = useState({})
@@ -35,6 +37,18 @@ function App() {
           <Route path="/login">
             <LogIn></LogIn>
           </Route>
+          <Route path="/blog">
+            <Blog></Blog>
+          </Route>
+          <Route path="/news">
+            <Blog></Blog>
+          </Route>
+          <Route path="/contact">
+            <Blog></Blog>
+          </Route>
+          <Route path="/destination">
+            <Blog></Blog>
+          </Route>
           <Route path="/createaccount">
            <CreateAccount></CreateAccount>
           </Route>
@@ -43,7 +57,7 @@ function App() {
           </PrivateRoute>
 
           <Route path="*">
-        
+            <NoMatch></NoMatch>
           </Route>
 
         </Switch>
