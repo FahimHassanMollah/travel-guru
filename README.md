@@ -11,4 +11,4 @@
  * React router
  * Firebase Authentication
  * React bootstrap
- * Heroku  
+   
